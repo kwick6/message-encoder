@@ -17,32 +17,20 @@
     <script>
       var encoder = {
         setMessage: function() {
-
-          // var message is a local variable not accessible outside of this function, but we
-          // want to have message available to other functions.
+          // set the message entered
           this.message = document.getElementById("message").value
-
         },
         getPassword: function() {
-
           // after user fills in message, prompt user for a password.
           this.password = prompt("Please enter a password")
         },
         setUrl: function() {
-
           // set URL for the decode page to get the encrypt method
           this.url = document.URL + "decrypt.html?" + this.encrypt()
-
         },
         replaceMessageWithUrl: function () {
-
+          // replace message with the URL to decode message
           document.getElementById('message').value = this.url
-
-          // use methods on window.location to get message
-          // {
-          //  window.location.assign("http://localhost:2345/decode.html/" + cypher);
-          // }
-
         },
         encrypt: function() {
           cypher = CryptoJS.AES.encrypt(this.message, this.password)
